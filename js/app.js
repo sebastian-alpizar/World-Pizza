@@ -118,8 +118,33 @@ logo.addEventListener("click", function () {
 });
 
 const iconos = document.querySelectorAll('.sociales-metodo');
-iconos.forEach(div => {
-  div.addEventListener('click', () => {
-    div.classList.toggle('active');
-  });
-});
+let isTouchDevice = 'ontouchstart' in document.documentElement;
+
+// Para dispositivos táctiles, usar click para toggle
+if (isTouchDevice) {
+     iconos.forEach(div => {
+          div.addEventListener('click', (e) => {
+          // Cerrar los demás elementos al abrir uno nuevo
+          iconos.forEach(otherDiv => {
+               if (otherDiv !== div && otherDiv.classList.contains('active')) {
+                    otherDiv.classList.remove('active');
+               }
+          });
+          
+          // Alternar el elemento actual
+          div.classList.toggle('active');
+          });
+     });
+     
+     // Cerrar al hacer clic fuera
+     document.addEventListener('click', (e) => {
+          if (!e.target.closest('.sociales-metodo')) {
+          iconos.forEach(div => {
+               div.classList.remove('active');
+          });
+          }
+     });
+}
+
+// Para dispositivos con mouse, NO agregamos el event listener de click
+// ya que queremos que solo funcione el hover

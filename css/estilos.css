@@ -692,15 +692,14 @@ footer{
      transition: all 0.5s;
 }
 
-.sociales-metodo i:hover + span{
-     transform: translateY(0px);
-}
-
-.sociales-metodo i:hover{
+/* Estados activos */
+.sociales-metodo.active i {
      transform: translateY(-20px);
 }
 
-
+.sociales-metodo.active span {
+     transform: translateY(0);
+}
 
 /* BOTON DE IR ARRIBA */
 #btn-top{
@@ -741,12 +740,6 @@ footer{
      transform: translateY(-3px);
 }
 
-
-
-
-
-
-
 /* MEDIA QUERYS */
 @media screen and (max-width: 850px){
      /* SLIDER PRODUCTOS */
@@ -780,10 +773,6 @@ footer{
           display: none;
      }
 }
-
-
-
-
 
 @media screen and (max-width: 650px){
      /* MENU PRINCIPAL */
@@ -907,7 +896,7 @@ footer{
     transform: translateY(-20px);
 }
 
-/* Opcional: hover en desktop también */
+/*hover en desktop también */
 @media (hover: hover) {
     .sociales-metodo:hover span {
         transform: translateY(0);
